@@ -1,6 +1,6 @@
-# ArchLoop MCP
+# ArchSync MCP
 
-The future Model Context Protocol adapter for exposing verified ArchLoop capabilities to coding agents and developer tools.
+The future Model Context Protocol adapter for exposing verified ArchSync capabilities to coding agents and developer tools.
 
 ## Repository boundary
 
@@ -15,4 +15,3 @@ This repository is an interface layer. It must call Guardian/Core APIs and must 
 - `architecture_propose_evolution`
 
 Implementation starts only after the deterministic Guardian Core has a stable finding contract.
-
