@@ -17,4 +17,4 @@
 
 The adapter must not duplicate Core conformance rules, must not auto-approve an evolution, and must not update an architecture baseline. It must reject reads or writes outside the caller-authorized workspace and redact secrets from every diagnostic/audit event. `boundary-policy.json` is the machine-readable ownership map; `pnpm verify` prevents implementation from crossing these invariants.
 
-Implementation remains intentionally blocked until the versioned Phase 4 Explanation and Repair Candidate contracts are accepted. The boundary CI is active now so later schema or adapter changes cannot silently broaden authority.
+A preparatory thin adapter and exact source-contract pins are present, but production activation remains intentionally blocked until the versioned Phase 4 Explanation and Repair Candidate contracts are accepted and the real packaged backend passes conformance/security review. The boundary CI prevents schemas or adapter code from silently broadening authority.

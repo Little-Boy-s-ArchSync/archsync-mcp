@@ -1,14 +1,26 @@
 {
   "name": "@archsync/mcp",
-  "version": "0.0.0-boundary",
+  "version": "0.1.0-preparatory",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
   "engines": {
     "node": ">=22"
   },
+  "bin": {
+    "archsync-mcp": "src/stdio.mjs"
+  },
   "scripts": {
+    "start": "node src/stdio.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:coverage": "node --experimental-test-coverage --test-coverage-include=src/*.mjs --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test test/*.test.mjs",
     "verify:boundary": "node scripts/verify-boundary.mjs",
-    "verify": "pnpm verify:boundary"
+    "verify:schemas": "node scripts/verify-schemas.mjs",
+    "verify:protocol": "node scripts/smoke-protocol.mjs",
+    "verify": "pnpm verify:boundary && pnpm verify:schemas && pnpm test:coverage && pnpm verify:protocol"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "4.2.1"
   }
 }

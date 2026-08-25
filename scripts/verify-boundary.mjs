@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readFile, readdir } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import { lstat, readFile, readdir } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
@@ -8,7 +9,7 @@ const readme = await readFile(join(root, "README.md"), "utf8");
 const boundary = await readFile(join(root, "docs", "BOUNDARY.md"), "utf8");
 
 assert.equal(policy.schema_version, 1);
-assert.equal(policy.status, "implementation-blocked-until-versioned-phase-4-contracts");
+assert.equal(policy.status, "preparatory-adapter-awaits-phase-4-acceptance");
 assert.deepEqual(Object.keys(policy.delegates).sort(), [
   "architecture-validation",
   "drift-and-policy-decisions",
@@ -45,6 +46,20 @@ for (const path of await files(join(root, "src"))) {
   }
 }
 
-const trackedText = [readme, boundary, JSON.stringify(policy)];
-assert.doesNotMatch(trackedText.join("\n"), /(?:github_pat_|ghp_|sk-(?:live|test|proj)-)[A-Za-z0-9_-]{8,}/u);
-console.log(`PASS MCP BOUNDARY (${policy.planned_tools.length} planned tools; implementation remains dependency-gated)`);
+const listed = spawnSync("git", ["ls-files", "--cached", "--others", "--exclude-standard", "-z"], {
+  cwd: root,
+  encoding: "utf8",
+  shell: false,
+  windowsHide: true,
+});
+assert.equal(listed.status, 0, listed.stderr);
+const credentialPattern = /(?:github_pat_|ghp_|sk-(?:live|test|proj)-)[A-Za-z0-9_-]{8,}/u;
+for (const name of listed.stdout.split("\0").filter(Boolean)) {
+  const metadata = await lstat(join(root, name));
+  assert.equal(metadata.isSymbolicLink(), false, `${name} must not be a symbolic link`);
+  assert.equal(metadata.isFile(), true, `${name} must be a regular file`);
+  const content = await readFile(join(root, name));
+  if (content.includes(0)) continue;
+  assert.doesNotMatch(content.toString("utf8"), credentialPattern, `${name} contains a credential-shaped value`);
+}
+console.log(`PASS MCP BOUNDARY (${policy.planned_tools.length} tools; preparatory adapter remains acceptance-gated)`);

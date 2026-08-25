@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "implementation-blocked-until-versioned-phase-4-contracts",
+  "status": "preparatory-adapter-awaits-phase-4-acceptance",
   "owns": [
     "tool-schemas",
     "transport",

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "tool_contract_version": "0.1",
+  "mcp_protocol_version": "2026-07-28",
+  "status": "preparatory-not-accepted",
+  "source_contracts": {
+    "core_compatibility_commit": "a1f0143aa8eb917aa0d93e28101b1893347453e2",
+    "guardian_reasoner_commit": "65a3f237b3bf4d6b1263b294a56c9b57c5b038a2",
+    "finding_contract": "0.1",
+    "explanation_contract": "0.1",
+    "repair_candidate_contract": "0.1"
+  },
+  "authority": {
+    "baseline_write": false,
+    "evolution_approval": false,
+    "repair_acceptance": false,
+    "human_review_required": true
+  },
+  "limits": {
+    "input_bytes": 1048576,
+    "output_bytes": 2097152,
+    "json_bytes": 1048576,
+    "string_bytes": 32768,
+    "collection_items": 256,
+    "json_depth": 8,
+    "json_nodes": 4096,
+    "object_keys": 256
+  },
+  "explanation_release_gate": {
+    "citation_validation_valid": true,
+    "unsupported_claims": 0,
+    "citation_ids_must_match_supplied_evidence": true
+  },
+  "tools": [
+    {
+      "name": "architecture_validate",
+      "delegate": "@archsync/core.validate",
+      "required_input": ["contract_version", "model_path"],
+      "required_output": ["contract_version", "valid", "issues"]
+    },
+    {
+      "name": "architecture_graph",
+      "delegate": "@archsync/core + @archsync/guardian graph APIs",
+      "required_input": ["contract_version", "model_path", "repository_path"],
+      "required_output": ["contract_version", "expected", "observed"]
+    },
+    {
+      "name": "architecture_check_diff",
+      "delegate": "@archsync/guardian.checkDiff",
+      "required_input": ["contract_version", "model_path", "repository_path", "base_revision", "head_revision"],
+      "required_output": ["contract_version", "classification", "decision", "findings", "diff"]
+    },
+    {
+      "name": "architecture_explain_finding",
+      "delegate": "@archsync/guardian reasoner",
+      "required_input": ["contract_version", "finding", "evidence"],
+      "required_output": ["contract_version", "explanation", "citation_validation"]
+    },
+    {
+      "name": "architecture_propose_evolution",
+      "delegate": "@archsync/guardian repair candidate",
+      "required_input": ["contract_version", "finding", "desired_change", "target_files"],
+      "required_output": ["contract_version", "proposal", "approval"]
+    }
+  ],
+  "error_codes": [
+    "INVALID_ARGUMENT",
+    "UNAUTHORIZED",
+    "RATE_LIMITED",
+    "VERSION_MISMATCH",
+    "BACKEND_UNAVAILABLE",
+    "PROVIDER_UNAVAILABLE",
+    "OUTPUT_REJECTED",
+    "TIMEOUT",
+    "INTERNAL_ERROR"
+  ]
+}
