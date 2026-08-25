@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "implementation-blocked-until-versioned-phase-4-contracts",
+  "owns": [
+    "tool-schemas",
+    "transport",
+    "authentication-boundary",
+    "rate-limit-hook"
+  ],
+  "delegates": {
+    "architecture-validation": "@archsync/core",
+    "graph-and-conformance": "@archsync/core",
+    "drift-and-policy-decisions": "@archsync/guardian",
+    "repair-verification": "@archsync/guardian"
+  },
+  "forbidden_capabilities": [
+    "duplicate-conformance-rules",
+    "auto-approve-evolution",
+    "update-architecture-baseline",
+    "read-outside-workspace",
+    "write-outside-workspace",
+    "log-secrets"
+  ],
+  "planned_tools": [
+    "architecture_validate",
+    "architecture_graph",
+    "architecture_check_diff",
+    "architecture_explain_finding",
+    "architecture_propose_evolution"
+  ]
+}
