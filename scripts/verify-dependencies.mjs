@@ -30,5 +30,6 @@ const guardianProvenance = JSON.parse(await readFile(new URL("../dist/provenance
 assert.equal(corePackage.version, manifest.packages["@archsync/core"].version);
 assert.equal(guardianPackage.version, manifest.packages["@archsync/guardian"].version);
 assert.equal(guardianProvenance.source_commit, manifest.packages["@archsync/guardian"].source_commit);
+assert.equal(guardianProvenance.package_content_sha256, manifest.packages["@archsync/guardian"].package_content_sha256);
 
 console.log(`PASS MCP PINNED DEPENDENCIES (Core ${corePackage.version}; Guardian ${guardianPackage.version}; provisional boundary)`);

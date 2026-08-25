@@ -12,8 +12,8 @@ importers:
         specifier: file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz
         version: file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz
       '@archsync/guardian':
-        specifier: file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz
-        version: file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz
+        specifier: file:vendor/archsync-guardian-0.3.3-integration-ebaaf27.tgz
+        version: file:vendor/archsync-guardian-0.3.3-integration-ebaaf27.tgz
       '@modelcontextprotocol/server':
         specifier: 2.0.0
         version: 2.0.0
@@ -29,8 +29,8 @@ packages:
     engines: {node: '>=22'}
     hasBin: true
 
-  '@archsync/guardian@file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz':
-    resolution: {integrity: sha512-bKRR4B8XhgQWxiwAuHaTg9KiVP60Zn8RJTyozwRPaV3f3PyhOA9to20qMYaCRpsAv+RgzAsMtRIVsBPNZnlBtw==, tarball: file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz}
+  '@archsync/guardian@file:vendor/archsync-guardian-0.3.3-integration-ebaaf27.tgz':
+    resolution: {integrity: sha512-uFgp7HMsE2GRtyGHojLOYBLQXvc5MBVOitwrYZiQWOgmn86IiOKrdQzerRkxdB6gqHtByJrJmDOJNo3MaOdXrw==, tarball: file:vendor/archsync-guardian-0.3.3-integration-ebaaf27.tgz}
     version: 0.3.3
     engines: {node: '>=22'}
     hasBin: true
@@ -81,7 +81,7 @@ snapshots:
       ajv: 8.20.0
       yaml: 2.9.0
 
-  '@archsync/guardian@file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz':
+  '@archsync/guardian@file:vendor/archsync-guardian-0.3.3-integration-ebaaf27.tgz':
     dependencies:
       typescript: 5.9.3
       yaml: 2.9.0

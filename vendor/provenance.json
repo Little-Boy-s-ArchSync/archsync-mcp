@@ -9,10 +9,11 @@
       "sha256": "7f6c2db24888d8e4bf6eb6dd2cc2d0abaaf2fc908e2b43937aec40d163b05fc9"
     },
     "@archsync/guardian": {
-      "file": "archsync-guardian-0.3.3-integration-e41a868.tgz",
+      "file": "archsync-guardian-0.3.3-integration-ebaaf27.tgz",
       "version": "0.3.3",
-      "source_commit": "e41a868382aeb99e5f8700c21442eee04621a51a",
-      "sha256": "662b91b0c62b9f378cdf3fdbbb5f6f8bbc2dd463f0c24fee6816d34b3fc6c5c6"
+      "source_commit": "ebaaf2711602890ef6ead8983bd33e2cf4853e17",
+      "sha256": "06243cdc96dbdb4e13db2a05c82fbd2b4879b72f80f20d2fc109d430446d0127",
+      "package_content_sha256": "66e1c94ebb30c630b48a8f71beedb32206b1cd46f5da02a546a307e40dfbe27c"
     }
   },
   "authority": {

@@ -36,6 +36,7 @@ const evidence = {
     version: value.version,
     source_commit: value.source_commit,
     sha256: value.sha256,
+    ...(value.package_content_sha256 ? { package_content_sha256: value.package_content_sha256 } : {}),
   }])),
   automated_scope: {
     real_package_tools: ["architecture_validate", "architecture_graph", "architecture_check_diff"],
