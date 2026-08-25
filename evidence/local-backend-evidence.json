@@ -11,9 +11,9 @@
     },
     "@archsync/guardian": {
       "version": "0.3.3",
-      "source_commit": "ebaaf2711602890ef6ead8983bd33e2cf4853e17",
-      "sha256": "06243cdc96dbdb4e13db2a05c82fbd2b4879b72f80f20d2fc109d430446d0127",
-      "package_content_sha256": "66e1c94ebb30c630b48a8f71beedb32206b1cd46f5da02a546a307e40dfbe27c"
+      "source_commit": "5ac01f1fa5b008103f274612b9aa9f602b111fae",
+      "sha256": "5c74eaf3a364bda926154f1165594f844ac9d0cbf569fc92c543b7582585836a",
+      "package_content_sha256": "6b68e1dfa1e5a0c5b8361e2eb4f0621b34232b90f1fb4559c8d9818e922135fb"
     }
   },
   "automated_scope": {
@@ -45,9 +45,9 @@
   },
   "artifacts": {
     "boundary-policy.json": "7bafac17fee238af83d3f633e69c9569b03ea61a7f7074cfdc610cab6b2e3cc5",
-    "package.json": "46034e029eb564de7719784c4e72a14f91fac6733cfbd81c71796aadc67e10fb",
-    "pnpm-lock.yaml": "6aae5cad9d454a5759809e28a9a0584d9980d594d339321d16c2a1da51c949dd",
-    "schemas/tools.v0.1.json": "ebed0c3528eae987030be34b545e7f5c8334622bb7e7516f7e836479f04b412e",
+    "package.json": "972ce9e93e73d6da4c556c43f82f75d1e36c0fa30fe621e7fcd2e87889471a0a",
+    "pnpm-lock.yaml": "dbdba89782c07df995198e1f7ed686442cae6a0e6bd038458c82a3250f8e37f2",
+    "schemas/tools.v0.1.json": "19e98745041b4660f9283a3d1b9ff43d086f50b9c8409a956e2427392a6ce1ca",
     "scripts/package-install-e2e.mjs": "2eeaa9a7f88175edae846ee1af9a94883801cc24dd04753d7141d7c2c076bb9e",
     "scripts/smoke-protocol.mjs": "46b6e9f755669499db417a5b4f5c2eb69ef371f8ae1cbe41d297ebbfbd42979c",
     "scripts/verify-dependencies.mjs": "cc935396236bc0a479169eabfd8d8dd509dcb17dd2c0911313f1cfff9ef511b6",
@@ -56,6 +56,6 @@
     "src/local-backend.mjs": "7beba47e346725a9bf80a56c5bfcee1e1dc1ca2b5fcb95338e5d9f12f14fa2b6",
     "test/local-backend.test.mjs": "51d2a061b1b3059c278da9f1971eabd1290ace05b78509789a7bd37a981564ad",
     "docs/security/THREAT-MODEL.md": "8a7a3ad8f49e1a29eae62e03acf6c62c98aa23884ceddcd310884478b60ff651",
-    "vendor/provenance.json": "fa7545f200ad4784619295b84d6a71ef0259ba6e102991e2f528f62833e7e678"
+    "vendor/provenance.json": "77a53e31e75e1d22ad00b9e2e716a340b12c7014a5b72f354d19974d935b1700"
   }
 }

@@ -5,7 +5,7 @@
   "status": "technical-foundation-not-accepted",
   "source_contracts": {
     "core_integration_commit": "503b5fe97aa39a78d5e5de80b794a94508e106cc",
-    "guardian_integration_commit": "ebaaf2711602890ef6ead8983bd33e2cf4853e17",
+    "guardian_integration_commit": "5ac01f1fa5b008103f274612b9aa9f602b111fae",
     "finding_contract": "0.1",
     "explanation_contract": "0.1",
     "repair_candidate_contract": "0.1.0-preparatory"

@@ -12,7 +12,7 @@ assert.equal(registry.tool_contract_version, toolContractVersion);
 assert.equal(registry.mcp_protocol_version, protocolVersion);
 assert.equal(registry.status, "technical-foundation-not-accepted");
 assert.equal(registry.source_contracts.core_integration_commit, "503b5fe97aa39a78d5e5de80b794a94508e106cc");
-assert.equal(registry.source_contracts.guardian_integration_commit, "ebaaf2711602890ef6ead8983bd33e2cf4853e17");
+assert.equal(registry.source_contracts.guardian_integration_commit, "5ac01f1fa5b008103f274612b9aa9f602b111fae");
 assert.deepEqual(registry.local_backend.real_package_tools, tools.slice(0, 3));
 assert.deepEqual(registry.local_backend.provider_gated_tools, tools.slice(3));
 assert.equal(registry.local_backend.workspace_symlinks, "reject");

@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@archsync/core": "file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz",
-    "@archsync/guardian": "file:vendor/archsync-guardian-0.3.3-integration-ebaaf27.tgz",
+    "@archsync/guardian": "file:vendor/archsync-guardian-0.3.3-integration-5ac01f1.tgz",
     "@modelcontextprotocol/server": "2.0.0",
     "zod": "4.2.1"
   },
