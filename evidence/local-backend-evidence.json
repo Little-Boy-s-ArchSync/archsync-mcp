@@ -48,7 +48,7 @@
     "pnpm-lock.yaml": "8d9b8390bd8623bb7b9b4e300f0e93715ab88b71e8150938f9697d85612882ea",
     "schemas/tools.v0.1.json": "19b70befff60939a6de2634f22330a542adbda83eacd373b4b998202db27a05b",
     "scripts/package-install-e2e.mjs": "2eeaa9a7f88175edae846ee1af9a94883801cc24dd04753d7141d7c2c076bb9e",
-    "scripts/smoke-protocol.mjs": "f12a066ffea40ec87c4ea73853e628e460bf04f03412ed65c853b63199dda4ea",
+    "scripts/smoke-protocol.mjs": "46b6e9f755669499db417a5b4f5c2eb69ef371f8ae1cbe41d297ebbfbd42979c",
     "scripts/verify-dependencies.mjs": "eaa10e33c6e07be5731e8052da1720f561b65935748d746116edc2c96b359000",
     "src/adapter.mjs": "43cf681fb3ed725d37ea33c3e591696ebc79d9aea13ccd2d2a7e1ab60f2f8a35",
     "src/contracts.mjs": "ede9af7a92029aeffbf6b1617eb1da0bd02b306fc1ed37651628ff68d3e8f571",
