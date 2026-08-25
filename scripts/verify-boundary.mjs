@@ -9,7 +9,7 @@ const readme = await readFile(join(root, "README.md"), "utf8");
 const boundary = await readFile(join(root, "docs", "BOUNDARY.md"), "utf8");
 
 assert.equal(policy.schema_version, 1);
-assert.equal(policy.status, "preparatory-adapter-awaits-phase-4-acceptance");
+assert.equal(policy.status, "technical-foundation-awaits-upstream-and-human-acceptance");
 assert.deepEqual(Object.keys(policy.delegates).sort(), [
   "architecture-validation",
   "drift-and-policy-decisions",
@@ -62,4 +62,4 @@ for (const name of listed.stdout.split("\0").filter(Boolean)) {
   if (content.includes(0)) continue;
   assert.doesNotMatch(content.toString("utf8"), credentialPattern, `${name} contains a credential-shaped value`);
 }
-console.log(`PASS MCP BOUNDARY (${policy.planned_tools.length} tools; preparatory adapter remains acceptance-gated)`);
+console.log(`PASS MCP BOUNDARY (${policy.planned_tools.length} tools; technical foundation remains acceptance-gated)`);

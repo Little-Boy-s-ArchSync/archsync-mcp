@@ -2,13 +2,26 @@
   "schema_version": 1,
   "tool_contract_version": "0.1",
   "mcp_protocol_version": "2026-07-28",
-  "status": "preparatory-not-accepted",
+  "status": "technical-foundation-not-accepted",
   "source_contracts": {
-    "core_compatibility_commit": "a1f0143aa8eb917aa0d93e28101b1893347453e2",
-    "guardian_reasoner_commit": "65a3f237b3bf4d6b1263b294a56c9b57c5b038a2",
+    "core_integration_commit": "503b5fe97aa39a78d5e5de80b794a94508e106cc",
+    "guardian_integration_commit": "e41a868382aeb99e5f8700c21442eee04621a51a",
     "finding_contract": "0.1",
     "explanation_contract": "0.1",
-    "repair_candidate_contract": "0.1"
+    "repair_candidate_contract": "0.1.0-preparatory"
+  },
+  "local_backend": {
+    "real_package_tools": [
+      "architecture_validate",
+      "architecture_graph",
+      "architecture_check_diff"
+    ],
+    "provider_gated_tools": [
+      "architecture_explain_finding",
+      "architecture_propose_evolution"
+    ],
+    "workspace_symlinks": "reject",
+    "git_revision_resolution": "argv-and-end-of-options"
   },
   "authority": {
     "baseline_write": false,
@@ -34,7 +47,7 @@
   "tools": [
     {
       "name": "architecture_validate",
-      "delegate": "@archsync/core.validate",
+      "delegate": "@archsync/core.loadArchitecture",
       "required_input": ["contract_version", "model_path"],
       "required_output": ["contract_version", "valid", "issues"]
     },
@@ -46,7 +59,7 @@
     },
     {
       "name": "architecture_check_diff",
-      "delegate": "@archsync/guardian.checkDiff",
+      "delegate": "@archsync/guardian.checkRepositoryDiff",
       "required_input": ["contract_version", "model_path", "repository_path", "base_revision", "head_revision"],
       "required_output": ["contract_version", "classification", "decision", "findings", "diff"]
     },

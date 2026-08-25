@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const workspaceRoot = join(root, "test", "fixtures", "local-workspace");
 const metadata = {
   "io.modelcontextprotocol/protocolVersion": "2026-07-28",
   "io.modelcontextprotocol/clientInfo": { name: "archsync-smoke", version: "1" },
@@ -36,8 +37,8 @@ const child = spawn(process.execPath, [join(root, "src", "stdio.mjs")], {
     SYSTEMROOT: process.env.SYSTEMROOT,
     TEMP: process.env.TEMP,
     TMP: process.env.TMP,
-    ARCHSYNC_WORKSPACE_ROOT: root,
-    ARCHSYNC_BACKEND_MODULE: join(root, "test", "fixtures", "fake-backend.mjs"),
+    ARCHSYNC_WORKSPACE_ROOT: workspaceRoot,
+    ARCHSYNC_BACKEND_MODULE: join(root, "src", "local-backend.mjs"),
     ARCHSYNC_PRINCIPAL: "protocol-smoke",
     ARCHSYNC_ALLOWED_TOOLS: "architecture_validate",
   },
@@ -67,4 +68,4 @@ assert.equal(audits.length, 1);
 assert.deepEqual(Object.keys(audits[0]).sort(), ["duration_ms", "outcome", "schema_version", "tool"]);
 assert.equal(audits[0].outcome, "SUCCESS");
 assert.equal(stderr.includes("architecture.yaml"), false);
-console.log("PASS MCP 2026-07-28 STDIO (discover, list five tools, delegated call, safe audit)");
+console.log("PASS MCP 2026-07-28 STDIO (discover, list five tools, real Core validation, safe audit)");

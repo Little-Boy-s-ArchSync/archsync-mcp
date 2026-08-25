@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@archsync/core':
+        specifier: file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz
+        version: file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz
+      '@archsync/guardian':
+        specifier: file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz
+        version: file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz
       '@modelcontextprotocol/server':
         specifier: 2.0.0
         version: 2.0.0
@@ -17,6 +23,20 @@ importers:
 
 packages:
 
+  '@archsync/core@file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz':
+    resolution: {integrity: sha512-jBl90qnPk8iekmObb9wgSzj6y82PN8U5/ebAn3G6qhOp3yLVq4eSSAFFQ+2LPo1ESD23bEMf3BhhAJFTtJjhlw==, tarball: file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz}
+    version: 0.1.1
+    engines: {node: '>=22'}
+    hasBin: true
+
+  '@archsync/guardian@file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz':
+    resolution: {integrity: sha512-bKRR4B8XhgQWxiwAuHaTg9KiVP60Zn8RJTyozwRPaV3f3PyhOA9to20qMYaCRpsAv+RgzAsMtRIVsBPNZnlBtw==, tarball: file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz}
+    version: 0.3.3
+    engines: {node: '>=22'}
+    hasBin: true
+    bundledDependencies:
+      - '@archsync/core'
+
   '@modelcontextprotocol/core@2.0.0':
     resolution: {integrity: sha512-pJCEwGG7Lfr/+PQp9ZTwKXNeO5wzbfKL7H3MYpCorM4oFBoQrdjnBgEoqG+RjhsvS1FKrDbKux+M1HhlnGWqcA==}
     engines: {node: '>=20'}
@@ -25,10 +45,46 @@ packages:
     resolution: {integrity: sha512-YhHWdHfpFMQfd0prsEnxKeS3Qz3ytIGmsS0sth4KDjnacIT7hxk6hXHkJ9KysxlkvTM+WZAtQbbcUhdoP4Hvtw==}
     engines: {node: '>=20'}
 
+  ajv@8.20.0:
+    resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
+
+  fast-deep-equal@3.1.3:
+    resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  fast-uri@3.1.6:
+    resolution: {integrity: sha512-7Ical1vFEMr0onbVzEDIreM22I4khW+fzyQPwvAFWBp1iwdshSZRsL4jjRvPG9JP1uiqMHRto+YU6R2/CzDz5Q==}
+
+  json-schema-traverse@1.0.0:
+    resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+
+  require-from-string@2.0.2:
+    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
+    engines: {node: '>=0.10.0'}
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  yaml@2.9.0:
+    resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   zod@4.2.1:
     resolution: {integrity: sha512-0wZ1IRqGGhMP76gLqz8EyfBXKk0J2qo2+H3fi4mcUP/KtTocoX08nmIAHl1Z2kJIZbZee8KOpBCSNPRgauucjw==}
 
 snapshots:
+
+  '@archsync/core@file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz':
+    dependencies:
+      ajv: 8.20.0
+      yaml: 2.9.0
+
+  '@archsync/guardian@file:vendor/archsync-guardian-0.3.3-integration-e41a868.tgz':
+    dependencies:
+      typescript: 5.9.3
+      yaml: 2.9.0
 
   '@modelcontextprotocol/core@2.0.0':
     dependencies:
@@ -38,5 +94,24 @@ snapshots:
     dependencies:
       '@modelcontextprotocol/core': 2.0.0
       zod: 4.2.1
+
+  ajv@8.20.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-uri: 3.1.6
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+
+  fast-deep-equal@3.1.3: {}
+
+  fast-uri@3.1.6: {}
+
+  json-schema-traverse@1.0.0: {}
+
+  require-from-string@2.0.2: {}
+
+  typescript@5.9.3: {}
+
+  yaml@2.9.0: {}
 
   zod@4.2.1: {}

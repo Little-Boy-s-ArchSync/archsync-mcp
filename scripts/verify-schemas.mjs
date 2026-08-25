@@ -10,7 +10,12 @@ const threatModel = await readFile(new URL("../docs/security/THREAT-MODEL.md", i
 assert.equal(registry.schema_version, 1);
 assert.equal(registry.tool_contract_version, toolContractVersion);
 assert.equal(registry.mcp_protocol_version, protocolVersion);
-assert.equal(registry.status, "preparatory-not-accepted");
+assert.equal(registry.status, "technical-foundation-not-accepted");
+assert.equal(registry.source_contracts.core_integration_commit, "503b5fe97aa39a78d5e5de80b794a94508e106cc");
+assert.equal(registry.source_contracts.guardian_integration_commit, "e41a868382aeb99e5f8700c21442eee04621a51a");
+assert.deepEqual(registry.local_backend.real_package_tools, tools.slice(0, 3));
+assert.deepEqual(registry.local_backend.provider_gated_tools, tools.slice(3));
+assert.equal(registry.local_backend.workspace_symlinks, "reject");
 assert.deepEqual(registry.tools.map(({ name }) => name), tools);
 assert.deepEqual(registry.error_codes, [...errorCodes]);
 assert.equal(registry.authority.baseline_write, false);
@@ -28,6 +33,6 @@ for (const item of registry.tools) {
 }
 assert.match(quickstart, /MCP protocol `2026-07-28`/u);
 assert.match(quickstart, /cannot write a baseline or record a human decision/iu);
-assert.match(threatModel, /PREPARATORY/iu);
+assert.match(threatModel, /TECHNICAL FOUNDATION/iu);
 assert.match(threatModel, /does not constitute the human security approval/iu);
-console.log(`PASS MCP SCHEMAS (${tools.length} tools; protocol ${protocolVersion}; upstream acceptance still gated)`);
+console.log(`PASS MCP SCHEMAS (${tools.length} tools; protocol ${protocolVersion}; real local backend; acceptance gated)`);
