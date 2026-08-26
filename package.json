@@ -1,0 +1,14 @@
+{
+  "name": "@archsync/mcp",
+  "version": "0.0.0-boundary",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.16.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "verify:boundary": "node scripts/verify-boundary.mjs",
+    "verify": "pnpm verify:boundary"
+  }
+}
