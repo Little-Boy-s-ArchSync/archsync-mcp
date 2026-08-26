@@ -11,7 +11,6 @@ const packageDirectory = join(temporary, "package");
 const consumer = join(temporary, "consumer");
 const workspace = join(consumer, "workspace");
 const repository = join(workspace, "repository", "frontend", "src");
-const command = (name) => process.platform === "win32" ? `${name}.cmd` : name;
 
 function run(executable, arguments_, cwd, environment = process.env) {
   const result = spawnSync(executable, arguments_, {
@@ -20,15 +19,29 @@ function run(executable, arguments_, cwd, environment = process.env) {
     env: environment,
     shell: false,
     windowsHide: true,
+    maxBuffer: 20 * 1024 * 1024,
   });
-  assert.equal(result.status, 0, `${executable} ${arguments_.join(" ")}\n${result.stdout}\n${result.stderr}`);
+  assert.equal(
+    result.status,
+    0,
+    `${executable} ${arguments_.join(" ")}\n${result.error?.message ?? ""}\n${result.stdout ?? ""}\n${result.stderr ?? ""}`,
+  );
   return result.stdout;
+}
+
+function runPackageManager(name, arguments_, cwd, environment = process.env) {
+  if (process.platform !== "win32") return run(name, arguments_, cwd, environment);
+  const cli = name === "pnpm"
+    ? process.env.npm_execpath
+    : join(dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js");
+  assert.ok(cli, `${name} CLI path is unavailable`);
+  return run(process.execPath, [cli, ...arguments_], cwd, environment);
 }
 
 try {
   await mkdir(packageDirectory, { recursive: true });
   await mkdir(repository, { recursive: true });
-  run(command("pnpm"), ["pack", "--pack-destination", packageDirectory], root);
+  runPackageManager("pnpm", ["pack", "--pack-destination", packageDirectory], root);
   const archiveName = (await readdir(packageDirectory)).find((name) => name.endsWith(".tgz"));
   assert.ok(archiveName, "pnpm pack must create an MCP tarball");
   const archive = join(packageDirectory, archiveName);
@@ -75,7 +88,7 @@ console.log("PACKED_LOCAL_BACKEND_OK");
     ...process.env,
     npm_config_cache: join(temporary, "npm-cache"),
   };
-  run(command("npm"), ["install", "--offline", "--ignore-scripts", "--no-audit", "--no-fund", archive], consumer, installEnvironment);
+  runPackageManager("npm", ["install", "--offline", "--ignore-scripts", "--no-audit", "--no-fund", archive], consumer, installEnvironment);
   const output = run(process.execPath, ["verify.mjs"], consumer, installEnvironment);
   assert.match(output, /PACKED_LOCAL_BACKEND_OK/u);
 

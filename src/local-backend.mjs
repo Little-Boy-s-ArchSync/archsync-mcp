@@ -133,6 +133,26 @@ async function repositoryContext(workspaceRoot, repositoryPath, git, signal) {
   return { repository, root, subdirectory: relative(root, repository) };
 }
 
+async function rejectGitTreeSymlinks(repository, revision, subdirectory, git, signal) {
+  const scope = subdirectory.replaceAll("\\", "/") || ".";
+  const tree = await git([
+    "-C",
+    repository,
+    "ls-tree",
+    "-r",
+    "-z",
+    "--full-tree",
+    revision,
+    "--",
+    scope,
+  ], signal);
+  for (const record of tree.split("\0").filter(Boolean)) {
+    const separator = record.indexOf("\t");
+    const metadata = record.slice(0, separator);
+    if (metadata.startsWith("120000 ")) throw invalid();
+  }
+}
+
 function diffOutput(result, baseSha, headSha) {
   return plainJson({
     contract_version: "0.1",
@@ -207,6 +227,8 @@ export async function createLocalBackend({
       const headSha = await commit(context.root, headRevision, git, signal);
       const mergeBase = (await git(["-C", context.root, "merge-base", baseSha, headSha], signal)).trim();
       if (mergeBase !== baseSha) throw invalid();
+      await rejectGitTreeSymlinks(context.root, baseSha, context.subdirectory, git, signal);
+      await rejectGitTreeSymlinks(context.root, headSha, context.subdirectory, git, signal);
 
       const temporary = await mkdtemp(join(tmpdir(), "archsync-mcp-diff-"));
       const clone = join(temporary, "repository");
@@ -242,7 +264,6 @@ export async function createLocalBackend({
         abort(signal);
         return diffOutput(result, baseSha, headSha);
       } catch (error) {
-        if (error instanceof AdapterError) throw error;
         throw invalid(error);
       /* node:coverage ignore next */
       } finally {
