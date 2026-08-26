@@ -1,14 +1,51 @@
 {
   "name": "@archsync/mcp",
-  "version": "0.0.0-boundary",
+  "version": "0.1.0-preparatory",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
   "engines": {
     "node": ">=22"
   },
+  "bin": {
+    "archsync-mcp": "src/stdio.mjs"
+  },
+  "exports": {
+    ".": "./src/server.mjs",
+    "./local-backend": "./src/local-backend.mjs"
+  },
+  "files": [
+    "boundary-policy.json",
+    "docs",
+    "evidence",
+    "schemas",
+    "src",
+    "vendor/provenance.json",
+    "README.md"
+  ],
   "scripts": {
+    "start": "node src/stdio.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:coverage": "node --experimental-test-coverage --test-coverage-include=src/*.mjs --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test test/*.test.mjs",
     "verify:boundary": "node scripts/verify-boundary.mjs",
-    "verify": "pnpm verify:boundary"
-  }
+    "verify:schemas": "node scripts/verify-schemas.mjs",
+    "verify:dependencies": "node scripts/verify-dependencies.mjs",
+    "verify:evidence": "node scripts/evidence.mjs",
+    "verify:package": "node scripts/package-install-e2e.mjs",
+    "verify:protocol": "node scripts/smoke-protocol.mjs",
+    "evidence:update": "node scripts/evidence.mjs --write",
+    "verify": "pnpm verify:boundary && pnpm verify:schemas && pnpm verify:dependencies && pnpm test:coverage && pnpm verify:protocol && pnpm verify:evidence && pnpm verify:package"
+  },
+  "dependencies": {
+    "@archsync/core": "file:vendor/archsync-core-0.1.1-integration-503b5fe.tgz",
+    "@archsync/guardian": "file:vendor/archsync-guardian-0.3.3-integration-5ac01f1.tgz",
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "4.2.1"
+  },
+  "bundledDependencies": [
+    "@archsync/core",
+    "@archsync/guardian",
+    "@modelcontextprotocol/server",
+    "zod"
+  ]
 }

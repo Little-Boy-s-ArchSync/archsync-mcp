@@ -1,0 +1,10 @@
+version: "0.1.1"
+metadata:
+  name: MCP protocol smoke
+components:
+  frontend:
+    type: frontend
+    layer: experience
+relationships: []
+rules: []
+quality_goals: []

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "provisional-exact-package-boundary",
+  "packages": {
+    "@archsync/core": {
+      "file": "archsync-core-0.1.1-integration-503b5fe.tgz",
+      "version": "0.1.1",
+      "source_commit": "503b5fe97aa39a78d5e5de80b794a94508e106cc",
+      "sha256": "7f6c2db24888d8e4bf6eb6dd2cc2d0abaaf2fc908e2b43937aec40d163b05fc9"
+    },
+    "@archsync/guardian": {
+      "file": "archsync-guardian-0.3.3-integration-5ac01f1.tgz",
+      "version": "0.3.3",
+      "source_commit": "5ac01f1fa5b008103f274612b9aa9f602b111fae",
+      "sha256": "5c74eaf3a364bda926154f1165594f844ac9d0cbf569fc92c543b7582585836a",
+      "package_content_sha256": "6b68e1dfa1e5a0c5b8361e2eb4f0621b34232b90f1fb4559c8d9818e922135fb"
+    }
+  },
+  "authority": {
+    "accepted_release": false,
+    "security_approved": false,
+    "provider_enabled": false,
+    "baseline_write": false
+  }
+}
