@@ -53,9 +53,9 @@
     "scripts/verify-dependencies.mjs": "cc935396236bc0a479169eabfd8d8dd509dcb17dd2c0911313f1cfff9ef511b6",
     "src/adapter.mjs": "43cf681fb3ed725d37ea33c3e591696ebc79d9aea13ccd2d2a7e1ab60f2f8a35",
     "src/contracts.mjs": "ede9af7a92029aeffbf6b1617eb1da0bd02b306fc1ed37651628ff68d3e8f571",
-    "src/local-backend.mjs": "714f355d60564cc089fb676aa5c0897ee95840687765d97625d7ce505d4f7c43",
-    "test/local-backend.test.mjs": "51d2a061b1b3059c278da9f1971eabd1290ace05b78509789a7bd37a981564ad",
-    "docs/security/THREAT-MODEL.md": "8a7a3ad8f49e1a29eae62e03acf6c62c98aa23884ceddcd310884478b60ff651",
+    "src/local-backend.mjs": "b27e5feb4d300e45b5c49422249516ff1a73e15bf695700142f163cb2f6faf63",
+    "test/local-backend.test.mjs": "6eb0c0925753fd36c708cf62f7820874e8e835a2efa7ee60cf77fca9b3dd6558",
+    "docs/security/THREAT-MODEL.md": "3e9bd918858ccbf329b1d249831c96bd02c994766b67b8e32253cd5897dde79e",
     "vendor/provenance.json": "77a53e31e75e1d22ad00b9e2e716a340b12c7014a5b72f354d19974d935b1700"
   }
 }

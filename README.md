@@ -14,7 +14,7 @@ This repository is an interface layer. It must call Guardian/Core APIs and must 
 - `architecture_explain_finding`
 - `architecture_propose_evolution`
 
-The schemas, thin stdio transport, injected authorization/rate hooks, delegated backend interface and safety boundary are implemented. The included local backend executes the three deterministic tools through exact Core PR #3 and Guardian integration PR #8 package artifacts. It canonically contains workspace paths, rejects symlinks recursively, resolves Git revisions as commits with safe argument arrays and `--end-of-options`, and evaluates an exact base/head pair in an isolated local clone.
+The schemas, thin stdio transport, injected authorization/rate hooks, delegated backend interface and safety boundary are implemented. The included local backend executes the three deterministic tools through exact Core PR #3 and Guardian integration PR #8 package artifacts. It canonically contains workspace paths, rejects symlinks recursively, resolves Git revisions as commits with safe argument arrays and `--end-of-options`, checks out only validated 40-hex commit IDs, and evaluates an exact base/head pair in an isolated local clone.
 
 The explanation and evolution-proposal tools remain provider-gated and fail closed by default. Production activation still requires upstream acceptance, deployment authentication/authorization, provider review where applicable and human security approval. This repository cannot record an evolution approval or update an architecture baseline.
 
