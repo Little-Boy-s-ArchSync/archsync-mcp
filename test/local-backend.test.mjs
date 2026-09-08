@@ -118,7 +118,10 @@ test("pinned Core and Guardian packages execute deterministic local tools", asyn
     assert.equal(revisionCalls.length, 4);
     assert.equal(revisionCalls.every((arguments_) => arguments_.at(-2) === "--end-of-options"), true);
     assert.equal(gitArguments.some((arguments_) => arguments_[0] === "clone" && arguments_.includes("--end-of-options")), true);
-    assert.equal(gitArguments.some((arguments_) => arguments_.includes("checkout") && arguments_.at(-2) === "--end-of-options"), true);
+    const checkoutCalls = gitArguments.filter((arguments_) => arguments_.includes("checkout"));
+    assert.equal(checkoutCalls.length, 2);
+    assert.equal(checkoutCalls.every((arguments_) => !arguments_.includes("--end-of-options")), true);
+    assert.equal(checkoutCalls.every((arguments_) => /^[a-f0-9]{40}$/u.test(arguments_.at(-1))), true);
     assert.equal(gitArguments.some((arguments_) => arguments_.includes("core.hooksPath")), true);
     assert.equal(gitArguments.some((arguments_) => arguments_.includes("core.fsmonitor") && arguments_.at(-1) === "false"), true);
 

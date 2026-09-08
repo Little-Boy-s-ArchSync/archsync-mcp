@@ -252,7 +252,6 @@ export async function createLocalBackend({
           "checkout",
           "--detach",
           "--force",
-          "--end-of-options",
           headSha,
         ], signal);
         const repository = context.subdirectory ? join(clone, context.subdirectory) : clone;
